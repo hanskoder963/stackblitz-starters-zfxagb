@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('https://ashesofcreation.wiki/marsh_low.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: black;
+}
+
+header {
+  display: flex;
+  background-color: #333;
+  color: #e69710;
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+}
+header h1 {
+  margin: 10px 30%;
+}
+
+.kort-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.kort {
+  background-color: #333;
+  color: #c1c1c1;
+  border: 1px solid #e69710;
+  border-radius: 8px;
+  width: 250px;
+  padding: 15px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.kort img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.kort:hover {
+  transform: scale(1.05); /* Forstørrer kortet litt ved hover */
+}
+
+footer {
+  position: fixed;
+  bottom: 0; /* Plasserer den nederst */
+  left: 0; /* Plasserer den helt til venstre */
+  width: 100%; /* Får footeren til å dekke hele bredden */
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: #e69710;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #c68d10;
+}
+
+.twitch-button {
+  background-color: #9146ff;
+  color: white;
+  padding: 3px 5px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth overgang for hover-effekt */
+}
+
+.twitch-button:hover {
+  background-color: #7e38b0; /* Mørkere lilla ved hover */
+}

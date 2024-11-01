@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ashes of Creation</title>
+
+    <style>
+      body {
+        background-color: black;
+        margin: 0; /* Fjerner standard margin */
+        padding: 0; /* Fjerner standard padding */
+        height: 100vh; /* Setter høyden til 100% av visningsvinduet */
+        background-image: url('https://github.com/hanskoder963/testing-med-click-spill-og-spill-liste/raw/main/images/ashes-castle.png');
+        background-size: contain; /* Tilpasser bildet til å passe inn i visningsvinduet */
+        background-position: center; /* Sentraliserer bildet */
+        background-repeat: no-repeat; /* Forhindrer gjentakelse av bildet */
+      }
+
+      .content {
+        position: absolute; /* Setter posisjonen til absolutt */
+        top: 17px; /* Plasserer innholdet 20px fra toppen */
+        left: 20px; /* Plasserer innholdet 20px fra venstre siden */
+        color: white; /* Farge på teksten */
+      }
+
+      a {
+        padding: 10px 20px;
+        background: rgba(
+          76,
+          175,
+          80,
+          0.8
+        ); /* Lett gjennomsiktig grønn bakgrunn */
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s, transform 0.2s; /* Legger til overgang */
+      }
+
+      a:hover {
+        background: #45a049; /* Mørkere grønn ved hover */
+        transform: scale(1.05); /* Gjør knappen litt større ved hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <a href="/fredags.html">Tilbake til om meg</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flyttende og Stille Knapp med Score Tracker</title>
+    <style>
+      body {
+        height: 100vh;
+        margin: 0;
+        position: relative;
+        background-color: black; /* Svart bakgrunn */
+        color: white; /* Hvit tekstfarge */
+        overflow: hidden; /* Forhindre rulling når fyrverkeriet vises */
+      }
+      #scoreTracker {
+        position: absolute;
+        top: 20px; /* Plassering øverst */
+        left: 20px; /* Plassering til venstre */
+        font-size: 24px; /* Størrelse på teksten */
+      }
+      #bestePoengsum {
+        position: absolute;
+        top: 60px; /* Litt under score tracker */
+        left: 20px; /* Plassering til venstre */
+        font-size: 24px; /* Størrelse på teksten */
+      }
+      #countdown {
+        position: absolute;
+        top: 50%; /* Midt på skjermen vertikalt */
+        left: 50%; /* Midt på skjermen horisontalt */
+        transform: translate(-50%, -50%); /* Sentrere teksten */
+        font-size: 72px; /* Størrelse på nedtellingsteksten */
+      }
+      #flyttendeKnapp {
+        position: absolute;
+        padding: 20px;
+        font-size: 24px;
+        cursor: pointer;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #stilleKnapp {
+        position: absolute;
+        bottom: 20px; /* Plassering i bunnen */
+        right: 20px; /* Plassering til høyre */
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: green; /* Bakgrunnsfarge på den stille knappen */
+        color: white; /* Tekstfarge på den stille knappen */
+        border: none;
+        border-radius: 5px; /* Rundede kanter */
+      }
+      /* Stil for fyrverkeri */
+      .firework {
+        position: absolute;
+        width: 200px; /* Større fyrverkeri */
+        height: 200px; /* Større fyrverkeri */
+        background: radial-gradient(circle, #ffcc00 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0;
+        animation: explode 1s forwards; /* Fyrverkeri animasjon */
+      }
+      @keyframes explode {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(5);
+        } /* Større eksplosjon */
+      }
+      #startButton {
+        position: absolute;
+        top: 60%; /* Plassering under nedtelling */
+        left: 50%; /* Plassering i midten */
+        transform: translate(-50%, -50%); /* Sentrere knappen */
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: orange; /* Bakgrunnsfarge på start-knappen */
+        color: white; /* Tekstfarge på start-knappen */
+        border: none;
+        border-radius: 5px; /* Rundede kanter */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scoreTracker">Klikk: 0</div>
+    <div id="bestePoengsum">Beste Poengsum: 0</div>
+    <!-- Nytt element for beste poengsum -->
+    <div id="countdown">Tid igjen: 10</div>
+    <!-- Nytt element for countdown -->
+    <button id="flyttendeKnapp">Catch me!</button>
+    <button id="stilleKnapp">Menu</button>
+    <button id="startButton">Start Nedtelling</button>
+    <!-- Ny start knapp -->
+
+    <script>
+      const flyttendeKnapp = document.getElementById('flyttendeKnapp');
+      const stilleKnapp = document.getElementById('stilleKnapp');
+      const startButton = document.getElementById('startButton'); // Ny knapp
+      const scoreTracker = document.getElementById('scoreTracker');
+      const bestePoengsumElement = document.getElementById('bestePoengsum'); // Element for beste poengsum
+      const countdownElement = document.getElementById('countdown'); // Element for countdown
+
+      let score = 0; // Initial score
+      let timer; // Timer variable
+      let countdownTime = 10; // Startverdi for nedtellingen
+
+      // Hent lagret beste poengsum fra localStorage ved oppstart
+      let bestePoengsum = localStorage.getItem('bestePoengsum') || 0;
+      bestePoengsumElement.textContent = `Beste Poengsum: ${bestePoengsum}`; // Oppdaterer visningen
+
+      // Start nedtelling
+      function startCountdown() {
+        countdownElement.textContent = `Tid igjen: ${countdownTime}`;
+        timer = setInterval(() => {
+          countdownTime--;
+          countdownElement.textContent = `Tid igjen: ${countdownTime}`;
+          if (countdownTime <= 0) {
+            clearInterval(timer); // Stopp nedtelling
+            sjekkBestePoengsum(); // Sjekk beste poengsum når tiden er ute
+            visFyrverkeri(); // Vis fyrverkeri
+          }
+        }, 1000);
+      }
+
+      // Start nedtelling ved å klikke på start-knappen
+      startButton.addEventListener('click', () => {
+        countdownTime = 10; // Reset nedtelling til 10 sekunder
+        score = 0; // Reset poengsummen
+        scoreTracker.textContent = `Klikk: ${score}`; // Oppdater score tracker
+        bestePoengsumElement.textContent = `Beste Poengsum: ${bestePoengsum}`; // Oppdater beste poengsum
+        startCountdown(); // Start nedtelling
+      });
+
+      flyttendeKnapp.addEventListener('click', () => {
+        // Øk poengsummen med 1
+        score++;
+        scoreTracker.textContent = `Klikk: ${score}`; // Oppdater score tracker
+
+        // Hent høyden og bredden på vinduet
+        const vinduHøyde = window.innerHeight;
+        const vinduBredde = window.innerWidth;
+
+        // Generer tilfeldige posisjoner
+        const tilfeldigX =
+          Math.random() * (vinduBredde - flyttendeKnapp.offsetWidth);
+        const tilfeldigY =
+          Math.random() * (vinduHøyde - flyttendeKnapp.offsetHeight);
+
+        // Flytt knappen til den tilfeldige posisjonen
+        flyttendeKnapp.style.left = `${tilfeldigX}px`;
+        flyttendeKnapp.style.top = `${tilfeldigY}px`;
+      });
+
+      stilleKnapp.addEventListener('click', () => {
+        // Naviger til en annen side
+        window.location.href = 'index.html'; // Endre til din faktiske URL
+      });
+
+      function sjekkBestePoengsum() {
+        // Sjekk om nåværende poengsum er høyere enn beste poengsum
+        if (score > bestePoengsum) {
+          bestePoengsum = score; // Oppdater beste poengsum
+          localStorage.setItem('bestePoengsum', bestePoengsum); // Lagre ny beste poengsum i localStorage
+          bestePoengsumElement.textContent = `Beste Poengsum: ${bestePoengsum}`; // Oppdaterer visningen av beste poengsum
+        }
+      }
+
+      function visFyrverkeri() {
+        const firework = document.createElement('div');
+        firework.classList.add('firework');
+
+        // Plassere fyrverkeriet i midten av skjermen
+        firework.style.left = `${window.innerWidth / 2 - 100}px`; // Midt i bredden (større fyrverkeri)
+        firework.style.top = `${window.innerHeight / 2 - 100}px`; // Midt i høyden (større fyrverkeri)
+
+        document.body.appendChild(firework); // Legg fyrverkeriet til dokumentet
+
+        // Fjern fyrverkeriet etter 1 sekund
+        setTimeout(() => {
+          firework.remove();
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>

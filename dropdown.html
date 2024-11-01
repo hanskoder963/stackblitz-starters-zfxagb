@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown</title>
+    <style>
+      .dropbtn {
+        background-color: lightblue; /*color of first buttonÆ*/
+        color: white; /*color of text*/
+        padding: 20px;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: blue; /*color of dropdown content*/
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: orange; /*color of dropdown text*/
+        padding: 16px 20px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: darkblue; /*color of dropdown content hover*/
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown:hover .dropbtn {
+        background-color: darkgreen; /*color of dropdown button hover*/
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Dropdown Menu</h2>
+    <p>Move the mouse over the button to open the dropdown menu</p>
+
+    <div class="dropdown">
+      <button class="dropbtn">Dropdown</button>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div>
+    <p>
+      <strong>Note:</strong> I used href="#" for temporary links. I need to put
+      links in ther when i know where they should go.
+    </p>
+  </body>
+
+  <footer>
+    <p>Click <a href="index.html">here</a> to go to menu</p>
+  </footer>
+</html>

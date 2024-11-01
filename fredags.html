@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdowntwo {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdowntwo-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdowntwo:hover .dropdowntwo-content {
+        display: block;
+      }
+
+      .desc {
+        padding: 15px;
+        text-align: center;
+      }
+
+      .desctwo {
+        padding: 15px;
+        text-align: center;
+      }
+
+      body {
+        background-color: grey;
+        background-image: url('https://github.com/hanskoder963/testing-med-click-spill-og-spill-liste/raw/main/images/isbree.jpg');
+        background-size: cover; /* Gjør at bildet dekker hele bakgrunnen */
+        background-position: center; /* Sentraliserer bildet */
+        background-repeat: no-repeat; /* Forhindrer gjentakelse av bildet */
+      }
+
+      header {
+        text-align: center; /* Sentraliserer teksten i headeren */
+        padding: 20px; /* Legger til 20 piksler med padding rundt headeren */
+        color: white; /* Setter fargen på teksten i headeren */
+      }
+
+      main {
+        padding: 20px; /* Legger til padding for å skape plass rundt innholdet */
+        background: rgba(
+          0,
+          0,
+          0,
+          0.6
+        ); /* Mørk bakgrunn med 60% opasitet for bedre kontrast */
+        border-radius: 10px; /* Gir rundede hjørner til main-elementet */
+      }
+
+      footer {
+        text-align: center; /* Sentraliserer teksten i footer */
+        padding: 10px; /* Legger til litt plass rundt footer-innholdet */
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.7
+        ); /* Mørk bakgrunn med høyere opasitet */
+        color: white; /* Setter fargen på teksten i footer */
+      }
+
+      a {
+        color: #00ffcc; /* Lys cyanfarge for lenker */
+        text-decoration: none; /* Fjerner understreking på lenker */
+        transition: color 0.3s; /* Animasjon for fargeendring når du hover over */
+      }
+
+      a:hover {
+        color: #ffcc00; /* Endrer fargen på lenker ved hover */
+        text-decoration: underline; /* Understreker lenken ved hover */
+      }
+
+      a:visited {
+        color: #00ffcc; /* Holder fargen for besøkte lenker lik som for normale lenker */
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        color: white; /* Setter fargen på h1, h2, h3, og p til hvit for bedre kontrast */
+        text-shadow: 1px 1px 2px black; /* Legger til en skyggeeffekt på teksten */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Om meg</h1>
+    </header>
+    <h2>
+      Tenker å lage en liste meg spill jeg liker og linke de til en side hvor
+      det er et bilde av hvert spill
+    </h2>
+
+    <main>
+      <h3>her er en liste av mine favoritt spill</h3>
+      <p>
+        1.<a href="spill/wow.html">World of Warcraft </a>
+        <span class="dropdown">
+          <img
+            src="https://github.com/hanskoder963/testing-med-click-spill-og-spill-liste/raw/main/images/pngegg.png"
+            alt="wowlogo"
+            width="50"
+            height="15"
+          />
+          <div class="dropdown-content">
+            <img
+              src="https://github.com/hanskoder963/testing-med-click-spill-og-spill-liste/raw/main/images/pngegg.png"
+              alt="wowlogo"
+              width="300"
+              height="100"
+            />
+            <div class="desc">World of warcraft</div>
+          </div>
+        </span>
+      </p>
+
+      <p>
+        2.<a href="spill/aoc.html">Ashes of Creation </a>
+        <span class="dropdowntwo">
+          <img
+            src="https://github.com/hanskoder963/testing-med-click-spill-og-spill-liste/raw/main/images/ashes-phoenix.jpg"
+            alt="asheslogo"
+            width="50"
+            height="15"
+          />
+          <div class="dropdowntwo-content">
+            <img
+              src="https://github.com/hanskoder963/testing-med-click-spill-og-spill-liste/raw/main/images/ashes-phoenix.jpg"
+              alt="asheslogo"
+              width="300"
+              height="100"
+            />
+            <div class="desctwo">Ashes of Creation</div>
+          </div>
+        </span>
+      </p>
+
+      <p>
+        3.<a href="spill/owone.html">Overwatch 1</a>
+        <strong>IKKE OVERWATCH <a href="spill/trash.html">2!</a></strong>
+      </p>
+      <p>4.<a href="spill/toodie.html">7 days 2 die</a></p>
+      <p>5.<a href="spill/terra.html">Terraria</a></p>
+    </main>
+    <footer>
+      Listen er altid under endring siden devs klarer ikke la spill være bra og
+      liker å ødelegge dem
+      <p>skal lage bilde på hvert spill men fikk ikke lov uten å betale</p>
+      <a href="index.html"> return to menu</a>
+    </footer>
+  </body>
+</html>

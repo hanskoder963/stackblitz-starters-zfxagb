@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming menu</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            background-image: url('images/greentext.jpg');
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        
+        .bokstwo {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .boksone {
+            display: inline-block; /* Gjør den til en blokk */
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            text-decoration: none; /* Fjerner understreking */
+            color: white; /* Tekstfarge */
+            transition: background-color 0.3s; /* Overgangseffekt */
+
+        }
+
+        .boksone:hover {
+            background-color: rgb(141, 6, 175) ;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="bokstwo">
+            <h1>My menu</h1>
+            <p>This is my menu to the different types of things i learn.</p>
+
+            <div class="boksone">
+                Click <a href="css-crash-course.html" style=" color: orange" >here</a> to go to CSS
+            </div>
+            <div class="boksone">
+                Click <a href="anchors.html"style=" color: orange">here</a> to go to anchors
+            </div>
+            <div class="boksone">
+                Click <a href="attributes.html" style=" color: orange">here</a> to go to attributes
+            </div>
+
+            <a href="index.html" style=" color: orange">index</a>
+        </div>
+    </main>
+</body>
+</html>
